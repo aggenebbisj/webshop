@@ -10,14 +10,13 @@ import nl.rdj.promoprofs.business.entity.Product;
 
 @Stateless
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-
 public class FindProduct {
 
     @PersistenceContext
     private EntityManager em;
 
     public List<Product> findProducts() {
-        return em.createQuery("SELECT p FROM Product p", Product.class).getResultList();
+        return em.createNamedQuery(Product.ALL, Product.class).getResultList();
     }
 
 }
