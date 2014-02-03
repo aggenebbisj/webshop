@@ -1,7 +1,7 @@
-var webshop = angular.module('webshop', ['ngResource']);
+"use strict";
 
-function ProductCtrl($scope, $http) {
-    $http.get('resources/products').success(function(data) {
-        $scope.products = data;
-    });
-}
+var webshop = angular.module('webshop', ['ngResource', 'webshopServices']);
+
+webshop.controller('ProductCtrl', function($scope, ProductsService) {
+    $scope.products = ProductsService.query();
+});
